@@ -1,0 +1,18 @@
+version: "3.2"
+services:
+  pub:
+    build: ./pub
+    networks:
+      inner_net:
+        aliases:
+          - pub
+
+  sub:
+    build: ./sub
+    networks:
+      inner_net:
+        aliases:
+          - sub
+
+networks:
+  inner_net:
