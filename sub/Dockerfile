@@ -10,5 +10,3 @@ ADD sub.py /ws
 WORKDIR /ws
 
 ENTRYPOINT [ "python","sub.py" ]
-
-CMD [ "pub:15555" ]

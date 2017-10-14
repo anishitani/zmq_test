@@ -5,9 +5,16 @@ import zmq
 from random import randrange
 
 def main():
+    if len(sys.argv) > 1:
+        address = "tcp://" + sys.argv[1]
+    else:
+        address = "tcp://*:5556"
+
+    print ( "Publishing at %s" % address )
+
     context = zmq.Context()
-    socket = context.socket(zmq.PUB)
-    socket.bind("tcp://*:5556")
+    socket = context.socket( zmq.PUB )
+    socket.bind( address )
 
     while True:
         zipcode = randrange(1, 100000)

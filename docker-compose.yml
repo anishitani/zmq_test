@@ -9,6 +9,7 @@ services:
 
   sub:
     build: ./sub
+    # command: "pub:5556"
     networks:
       inner_net:
         aliases:

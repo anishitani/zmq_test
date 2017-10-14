@@ -10,5 +10,3 @@ ADD pub.py /ws
 WORKDIR /ws
 
 ENTRYPOINT [ "python","pub.py" ]
-
-CMD [ "*:15555" ]

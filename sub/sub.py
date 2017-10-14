@@ -4,17 +4,17 @@ import sys
 import zmq
 
 def main():
-    if len(sys.argv) == 1:
-        address = "localhost:5556"
+    if len(sys.argv) > 1:
+        address = "tcp://%s" % sys.argv[1]
     else:
-        address = sys.argv[1]
+        address = "tcp://pub:5556"
+
+    print("Collecting updates from weather server on %s" % address)
 
     #  Socket to talk to server
     context = zmq.Context()
-    socket = context.socket(zmq.SUB)
-
-    print("Collecting updates from weather server")
-    socket.connect("tcp://%s" % address)
+    socket = context.socket( zmq.SUB )
+    socket.connect( address )
 
     # Subscribe to zipcode, default is NYC, 10001
     zip_filter = sys.argv[1] if len(sys.argv) > 1 else "10001"
